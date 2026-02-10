@@ -8,14 +8,30 @@ def generate_html(data):
         {
             "day": 1,
             "date": "2月11日",
-            "title": "启程：北京-香港-巴厘岛",
+            "title": "出发！飞往众神之岛",
             "hotel": "The Westin Resort Nusa Dua",
-            "desc": "✈️ 航班信息：北京-香港 (07:30) | 香港-巴厘岛 (12:35)。抵达后入住威斯汀。第一天建议在酒店沙滩和泳池放松，缓解飞行劳累。",
+            "desc": """
+                <b>✈️ 飞行计划：</b><br>
+                • <b>第一程：</b>北京首都 (PEK) 07:30 ➔ 香港 (HKG) 11:05 (CX347)<br>
+                • <b>第二程：</b>香港 (HKG) 12:35 ➔ 巴厘岛 (DPS) 17:35 (CX785)<br>
+                <br>
+                <b>🚕 交通接驳：</b><br>
+                抵达巴厘岛机场 (Ngurah Rai) 后，完成入境及海关申报。由于带着三岁宝宝且行李较多，建议提前预订酒店接机或使用 Grab/Klook 专车。车程约 20-30 分钟。
+                <br><br>
+                <b>🍽️ 晚餐建议：</b><br>
+                • <b>首选：Ikan Restaurant</b> (威斯汀酒店内，就在沙滩边)。可以吹着海风享用地道的印尼烧烤或海鲜，非常适合第一晚的放松氛围。<br>
+                • <b>亲子备选：Prego</b> (威斯汀内意大利餐厅)。这里有专门的儿童菜单和游戏区，三岁宝宝会非常开心。
+            """,
             "pois": [
-                {"name": "北京首都国际机场 (PEK)", "lat": 40.0799, "lon": 116.6031, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g294212-d2279188-Reviews-Beijing_Capital_International_Airport-Beijing.html"},
+                {"name": "巴厘岛国际机场 (DPS)", "lat": -8.7482, "lon": 115.1675, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g294226-d2279188-Reviews-Ngurah_Rai_International_Airport-Kuta_Bali.html"},
                 {"name": "The Westin Resort Nusa Dua", "lat": -8.7941, "lon": 115.2302, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g297698-d302324-Reviews-The_Westin_Resort_Nusa_Dua_Bali-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"}
             ],
-            "tips": "💡 入境提示：请提前准备好 e-VoA 电子签、Bali Levy 缴纳证明和 e-CD 海关申报码。巴厘岛刷牙建议也用瓶装水。"
+            "tips": """
+                <b>🛡️ 专业导游提醒：</b><br>
+                1. <b>香港转机：</b>由于转机时间仅 1.5 小时，请下飞机后迅速寻找 'Transfer' 指引，并确认下一程登机口。<br>
+                2. <b>入境流程：</b>下飞机后依次完成：购买 VOA (或出示 e-VOA) ➔ 边检 ➔ 提取行李 ➔ 扫描海关码 (e-CD)。<br>
+                3. <b>接机口：</b>走出玻璃门后，会有密集的接机人群，请耐心寻找写有您名字或 'Westin' 的牌子。
+            """
         },
         {
             "day": 2,
@@ -75,14 +91,21 @@ def generate_html(data):
         {
             "day": 7,
             "date": "2月17日",
-            "title": "启程回京：巴厘岛-香港-北京",
+            "title": "启程回京",
             "hotel": "Regala Skycity Hotel",
-            "desc": "✈️ 航班信息：巴厘岛-香港 (16:20) | 香港-北京 (次日 13:50)。入住香港丽豪航天城酒店。晚上可以在 11 SKIES 购物中心补货。",
+            "desc": """
+                <b>✈️ 飞行计划：</b><br>
+                • <b>第一程：</b>巴厘岛 (DPS) 16:20 ➔ 香港 (HKG) 21:10 (CX784)<br>
+                • <b>第二程：</b>香港 (HKG) 10:15 ➔ 北京 (PEK) 13:50 (次日 CX348)<br>
+                <br>
+                <b>🏨 住宿安排：</b><br>
+                抵达香港后入住 Regala Skycity。酒店位于 11 SKIES 航天城，非常适合休息和补货。
+            """,
             "pois": [
                 {"name": "Regala Skycity Hotel", "lat": 22.2985, "lon": 113.9360, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g294217-d23821034-Reviews-Regala_Skycity_Hotel-Hong_Kong.html"},
                 {"name": "香港国际机场 (HKG)", "lat": 22.3080, "lon": 113.9185, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g294217-d2279188-Reviews-Hong_Kong_International_Airport-Hong_Kong.html"}
             ],
-            "tips": "💡 转机提示：行李通常可以直挂北京，请在巴厘岛值机时确认。香港机场提供丰富的免税购物和亲子休息区。"
+            "tips": "💡 温馨提示：巴厘岛机场免税店值得一逛。回程行李请在柜台确认是否直挂北京。"
         }
     ]
 
@@ -351,7 +374,7 @@ def generate_html(data):
         
         <footer class="footer">
             <p>由 <strong>songsong的小跟班</strong> 为您精心打造</p>
-            <p>V9.0 航班动态版 | 专属 AI 助手</p>
+            <p>V10.0 专业管家版 | 专属 AI 助手</p>
         </footer>
     </div>
 
