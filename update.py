@@ -3,14 +3,21 @@ import datetime
 import json
 
 def generate_html(data):
-    # Itinerary Data Structure
+    # Itinerary Data Structure - MERGED V11 Details + V13 Visuals
     itinerary = [
         {
             "day": 1,
             "date": "2月11日",
             "title": "启程：飞往众神之岛",
             "hotel": "The Westin Resort Nusa Dua",
-            "desc": "✈️ 飞行计划：CX347 (07:30-11:05) & CX785 (12:35-17:35)。抵达后接机入住，开启假期！",
+            "desc": """
+                <b>✈️ 飞行计划：</b><br>
+                • <b>第一程：</b>北京首都 (PEK) 07:30 ➔ 香港 (HKG) 11:05 (CX347)<br>
+                • <b>第二程：</b>香港 (HKG) 12:35 ➔ 巴厘岛 (DPS) 17:35 (CX785)<br>
+                <br>
+                <b>🚕 交通接驳：</b><br>
+                抵达巴厘岛机场 (Ngurah Rai) 后，完成入境及海关申报。由于带着三岁宝宝且行李较多，建议提前预订酒店接机或使用 Grab/Klook 专车。车程约 20-30 分钟。
+            """,
             "pois": [
                 {
                     "name": "巴厘岛国际机场 (DPS)", 
@@ -23,197 +30,222 @@ def generate_html(data):
                     "name": "晚餐：Ikan Restaurant", 
                     "lat": -8.7941, "lon": 115.2302, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80",
-                    "info": "🍴 海滨烧烤 | 亮点: 沙滩用餐 | 人均: 30-50 USD",
+                    "info": "🍴 海滨烧烤 | 亮点: 沙滩用餐 | 威斯汀酒店内",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297698-d1066526-Reviews-Ikan_Restaurant_Bar-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"
                 }
             ],
-            "tips": "🛡️ 导游建议：由于转机紧凑，建议在香港机场快速解决午餐（如太兴烧味）。"
+            "tips": """
+                <b>🛡️ 专业导游提醒：</b><br>
+                1. <b>香港转机：</b>1.5小时紧凑，下飞机后直奔 'Transfer'。<br>
+                2. <b>入境流程：</b>VOI ➔ 边检 ➔ 提行李 ➔ 扫海关码 (e-CD)。<br>
+                3. <b>接机口：</b>走出玻璃门后，在密集牌子中找 'Westin' 或您的名字。
+            """
         },
         {
             "day": 2,
             "date": "2月12日",
             "title": "努沙杜瓦：亲子童话时光",
             "hotel": "The Westin Resort Nusa Dua",
-            "desc": "全天在酒店及周边享受顶级亲子设施，让宝宝彻底玩嗨！",
+            "desc": """
+                <b>🏖️ 全日安排：</b><br>
+                • <b>上午：</b>威斯汀儿童俱乐部。有手工、乐高和户外游戏，是全岛顶尖托管中心。<br>
+                • <b>下午：</b>在努沙杜瓦海滩玩沙或酒店亲子泳池嬉水，这里海浪极小，非常适合三岁宝宝。
+            """,
             "pois": [
                 {
                     "name": "Westin Kids Club", 
                     "lat": -8.7945, "lon": 115.2310, "type": "kids", 
                     "img": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80",
-                    "info": "🎨 托管中心 | 建议玩: 3h | 住客免费",
+                    "info": "🎨 托管中心 | 09:00-18:00 | 住客免费",
                     "link": "https://www.marriott.com/en-us/hotels/dpswi-the-westin-resort-nusa-dua-bali/overview/"
                 },
                 {
                     "name": "午餐：Seasonal Tastes", 
                     "lat": -8.7941, "lon": 115.2302, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80",
-                    "info": "🍱 国际自助 | 亮点: 现磨咖啡 | 人均: 25 USD",
+                    "info": "🍱 国际自助 | 亮点: 现磨咖啡 | 酒店内",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297698-d2151608-Reviews-Seasonal_Tastes-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"
                 },
                 {
                     "name": "晚餐：The Pirate's Bay", 
                     "lat": -8.7925, "lon": 115.2335, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&q=80",
-                    "info": "🏴‍☠️ 海盗船主题 | 建议停留: 2h | 宝宝必选",
+                    "info": "🏴‍☠️ 海盗船主题 | 树屋用餐 | 宝宝必选",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297698-d3493863-Reviews-The_Pirate_s_Bay-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"
                 }
             ],
-            "tips": "💡 导游建议：下午 4 点后沙滩光线最柔和，适合拍全家福。"
+            "tips": "💡 导游建议：威斯汀的 Kids Club 有些课程需提前预约，早餐后先领活动表。"
         },
         {
             "day": 3,
             "date": "2月13日",
             "title": "巨浪涌动与悬崖火舞",
             "hotel": "The Westin Resort Nusa Dua",
-            "desc": "见证自然的磅礴，体验巴厘岛最具震撼力的传统演出。",
+            "desc": """
+                <b>📷 行程亮点：</b><br>
+                • <b>上午：</b>Waterblow。礁石间喷涌而出的巨浪，震撼人心。<br>
+                • <b>下午：</b>包车前往乌鲁瓦图情人崖。傍晚 18:00 观看举世闻名的 Kecak 火舞表演。
+            """,
             "pois": [
                 {
-                    "name": "Waterblow", 
-                    "lat": -8.8012, "lon": 115.2355, "type": "attraction", 
+                    "name": "Uluwatu Temple (情人崖)", 
+                    "lat": -8.8291, "lon": 115.0849, "type": "attraction", 
                     "img": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&q=80",
-                    "info": "🌊 自然景观 | 建议玩: 1h | 门票: 约2.5万印尼盾",
-                    "link": "https://www.tripadvisor.cn/Attraction_Review-g297698-d3527715-Reviews-Water_Blow-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"
+                    "info": "🌅 日落胜地 | 演出 18:00 | 门票 15万印尼盾",
+                    "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d379333-Reviews-Uluwatu_Temple-Uluwatu_Bukit_Peninsula_Bali.html"
                 },
                 {
                     "name": "午餐：Bebek Tepi Sawah", 
                     "lat": -8.7900, "lon": 115.2200, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=400&q=80",
-                    "info": "🦆 稻田鸭餐 | 亮点: 酥脆脏鸭 | 人均: 20 USD",
+                    "info": "🦆 稻田脏鸭餐 | 亮点: 环境极佳",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297698-d1502447-Reviews-Bebek_Tepi_Sawah-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"
                 },
                 {
                     "name": "晚餐：Jimbaran Seafood", 
                     "lat": -8.7700, "lon": 115.1680, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80",
-                    "info": "🍤 沙滩晚餐 | 亮点: 看日落 | 约玩: 1.5h",
+                    "info": "🍤 金巴兰日落晚餐 | 浪漫烛光",
                     "link": "https://www.tripadvisor.cn/Restaurants-g297696-Jimbaran_South_Kuta_Bali.html"
                 }
             ],
-            "tips": "🐒 避坑：情人崖猴子多，手机一定要抓稳，眼镜摘下来放包里。"
+            "tips": "🐒 避坑警报：情人崖的猴子是“专业小偷”，藏好眼镜、帽子和车钥匙！"
         },
         {
             "day": 4,
             "date": "2月14日",
             "title": "换宿之旅：潜入乌布丛林",
             "hotel": "Maya Ubud Resort & Spa",
-            "desc": "告别大海，走向森林。今天我们将穿越半个岛屿，入住绝美丛林酒店。",
+            "desc": """
+                <b>🌿 换宿安排：</b><br>
+                • <b>上午：</b>退房后包车前往乌布，中途停留 Tegenungan 瀑布拍照。<br>
+                • <b>下午：</b>入住 Maya Ubud。在被森林环抱的河畔无边泳池享受静谧时光。
+            """,
             "pois": [
                 {
                     "name": "Tegenungan Waterfall", 
                     "lat": -8.5752, "lon": 115.2903, "type": "attraction", 
                     "img": "https://images.unsplash.com/photo-1559628233-eb1b1a45564b?auto=format&fit=crop&w=400&q=80",
-                    "info": "🌿 森林瀑布 | 建议玩: 1.5h | 门票: 2万印尼盾",
+                    "info": "🌿 森林瀑布 | 门票 2万印尼盾",
                     "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d8525287-Reviews-Tegenungan_Waterfall-Ubud_Gianyar_Regency_Bali.html"
                 },
                 {
                     "name": "午餐：D'Tukad River Club", 
                     "lat": -8.5750, "lon": 115.2900, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80",
-                    "info": "🌴 俱乐部午餐 | 亮点: 瀑布景观 | 人均: 20 USD",
+                    "info": "🌴 瀑布景观午餐 | 休闲风",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297701-d14175373-Reviews-D_Tukad_River_Club-Ubud_Gianyar_Regency_Bali.html"
                 },
                 {
                     "name": "晚餐：Bebek Bengil", 
                     "lat": -8.5147, "lon": 115.2647, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=400&q=80",
-                    "info": "🦆 创始脏鸭餐 | 亮点: 后花园稻田 | 人均: 25 USD",
+                    "info": "🦆 创始脏鸭餐 | 后花园稻田",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297701-d786438-Reviews-Bebek_Bengil-Ubud_Gianyar_Regency_Bali.html"
                 }
             ],
-            "tips": "🧳 导游提示：行李较多建议包整车，Maya Ubud 有很棒的无边泳池，记得给娃带泳衣。"
+            "tips": "🧳 交通贴士：南端到乌布约 1.5h，路况多变，请为宝宝备好零食。"
         },
         {
             "day": 5,
             "date": "2月15日",
-            "title": "乌布：精灵森林与艺术生活",
+            "title": "乌布：精灵森林与艺术下午茶",
             "hotel": "Maya Ubud Resort & Spa",
-            "desc": "漫步在充满艺术气息的乌布小镇，和可爱的生灵们近距离接触。",
+            "desc": """
+                <b>🐒 探索乌布：</b><br>
+                • <b>上午：</b>圣猴森林。在古树参天的森林里看猴子。这里的猴子相对礼貌。<br>
+                • <b>下午：</b>前往 Milk & Madu。全乌布最赞亲子餐厅，有游乐区和极品披萨。
+            """,
             "pois": [
                 {
-                    "name": "圣猴森林 (Sacred Monkey)", 
+                    "name": "圣猴森林", 
                     "lat": -8.5188, "lon": 115.2585, "type": "kids", 
                     "img": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80",
-                    "info": "🐒 生态探索 | 建议玩: 2h | 费用: 8万印尼盾",
+                    "info": "🐒 生态探索 | 门票 8万印尼盾",
                     "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d379334-Reviews-Sacred_Monkey_Forest_Sanctuary-Ubud_Gianyar_Regency_Bali.html"
                 },
                 {
                     "name": "午餐：Clear Cafe", 
                     "lat": -8.5140, "lon": 115.2660, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80",
-                    "info": "🍹 森林风餐厅 | 亮点: 必喝奶昔 | 人均: 15 USD",
+                    "info": "🍹 森林设计风 | 入门需脱鞋",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297701-d1956557-Reviews-Clear_Cafe-Ubud_Gianyar_Regency_Bali.html"
                 },
                 {
                     "name": "晚餐：Milk & Madu Ubud", 
                     "lat": -8.5065, "lon": 115.2625, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80",
-                    "info": "🍕 顶级亲子餐 | 亮点: 有游乐区 | 人均: 20 USD",
+                    "info": "🍕 顶级亲子餐 | 熔岩蛋糕推荐",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297701-d14144365-Reviews-Milk_Madu_Ubud-Ubud_Gianyar_Regency_Bali.html"
                 }
             ],
-            "tips": "👟 穿衣：乌布建议穿好走的运动鞋。晚餐 Milk & Madu 的熔岩蛋糕非常推荐！"
+            "tips": "👟 穿衣建议：乌布路面不平，圣猴林内部步行较多，建议穿运动鞋。"
         },
         {
             "day": 6,
             "date": "2月16日",
-            "title": "绿色梯田与圣水洗礼",
+            "title": "绿色梯田与圣泉洗礼",
             "hotel": "Maya Ubud Resort & Spa",
-            "desc": "在著名的秋千上俯瞰梯田，在圣泉寺感受古老信仰的力量。",
+            "desc": """
+                <b>🙏 文化沉浸：</b><br>
+                • <b>上午：</b>德格拉朗梯田。随后前往圣泉寺，体验巴厘岛传统的圣水祈福。<br>
+                • <b>下午：</b>回到酒店，在河畔 Spa 彻底放松，享受假期的宁静。
+            """,
             "pois": [
                 {
-                    "name": "Tegalalang Rice Terrace", 
+                    "name": "Tegalalang 梯田", 
                     "lat": -8.4312, "lon": 115.2800, "type": "attraction", 
                     "img": "https://images.unsplash.com/photo-1558239250-13651912f20c?auto=format&fit=crop&w=400&q=80",
-                    "info": "🌾 绿色浪潮 | 建议玩: 2h | 最佳拍照: 09:00",
+                    "info": "🌾 标志景观 | 最佳拍照 09:00",
                     "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d2279188-Reviews-Tegalalang_Rice_Terrace-Ubud_Gianyar_Regency_Bali.html"
                 },
                 {
                     "name": "午餐：Alas Harum Bali", 
                     "lat": -8.4280, "lon": 115.2850, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1559628233-eb1b1a45564b?auto=format&fit=crop&w=400&q=80",
-                    "info": "☕ 梯田午餐 | 亮点: 网红秋千 | 人均: 25 USD",
+                    "info": "☕ 网红秋千 | 梯田午餐",
                     "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d14175373-Reviews-Alas_Harum_Agro_Tourism-Ubud_Gianyar_Regency_Bali.html"
                 },
                 {
                     "name": "晚餐：The Sayan House", 
                     "lat": -8.5020, "lon": 115.2420, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1559628233-eb1b1a45564b?auto=format&fit=crop&w=400&q=80",
-                    "info": "🍱 日系融合菜 | 亮点: 阿勇河谷日落 | 人均: 40 USD",
+                    "info": "🍱 阿勇河谷日落晚餐 | 需预约",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297701-d7253503-Reviews-The_Sayan_House-Ubud_Gianyar_Regency_Bali.html"
                 }
             ],
-            "tips": "📸 摄影：Sayan House 的靠窗位置非常火爆，建议提前 2-3 天预约。"
+            "tips": "📸 摄影：Sayan House 的靠窗位置非常火爆，建议提前 2 天预约。"
         },
         {
             "day": 7,
             "date": "2月17日",
-            "title": "带着回忆，平安返程",
-            "hotel": "Regala Skycity HK",
-            "desc": "最后在乌布采购一番，随后前往机场。回程 CX784 (16:20-21:10)。",
+            "title": "启程回家：巴厘岛-香港",
+            "hotel": "Regala Skycity Hotel (HK)",
+            "desc": """
+                <b>✈️ 飞行计划：</b><br>
+                • <b>第一程：</b>巴厘岛 (DPS) 16:20 ➔ 香港 (HKG) 21:10 (CX784)<br>
+                • <b>第二程：</b>次日 10:15 香港 (HKG) ➔ 北京 (PEK) 13:50 (CX348)<br>
+                <br>
+                <b>🏨 中转安排：</b><br>
+                落地香港后，直接通过连廊入住丽豪航天城酒店。晚上可就近休息。
+            """,
             "pois": [
                 {
-                    "name": "乌布市场 (Ubud Market)", 
-                    "lat": -8.5068, "lon": 115.2625, "type": "attraction", 
-                    "img": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80",
-                    "info": "🛍️ 伴手礼采购 | 建议玩: 1h | 记得砍价",
-                    "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d2279188-Reviews-Ubud_Art_Market-Ubud_Gianyar_Regency_Bali.html"
-                },
-                {
-                    "name": "午餐：Sun Sun Warung", 
+                    "name": "Sun Sun Warung", 
                     "lat": -8.5080, "lon": 115.2630, "type": "dining", 
                     "img": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80",
-                    "info": "🍛 平价印尼菜 | 亮点: 家庭氛围 | 人均: 10 USD",
+                    "info": "🍛 离别午餐 | 平价地道印尼菜",
                     "link": "https://www.tripadvisor.cn/Restaurant_Review-g297701-d12903332-Reviews-Sun_Sun_Warung-Ubud_Gianyar_Regency_Bali.html"
                 },
                 {
-                    "name": "香港丽豪航天城", 
+                    "name": "Regala Skycity HK", 
                     "lat": 22.2985, "lon": 113.9360, "type": "hotel", 
                     "img": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80",
-                    "info": "✈️ 中转首选 | 亮点: 离机场极近 | 晚22:00入住",
+                    "info": "✈️ 航天城酒店 | 直连机场",
                     "link": "https://www.tripadvisor.cn/Hotel_Review-g294217-d23821034-Reviews-Regala_Skycity_Hotel-Hong_Kong.html"
                 }
             ],
-            "tips": "🛍️ 提醒：回程行李请确认是否直挂。香港机场 11 SKIES 有很多亲子互动区。"
+            "tips": "🛍️ 提醒：回程行李请在巴厘岛值机时确认是否直挂北京。"
         }
     ]
 
@@ -378,7 +410,7 @@ def generate_html(data):
         }
         .poi-img {
             width: 100%;
-            height: 160px;
+            height: 140px;
             background-size: cover;
             background-position: center;
         }
@@ -471,7 +503,7 @@ def generate_html(data):
         
         <footer class="footer">
             <p>由 <strong>songsong的小跟班</strong> 为您精心打造</p>
-            <p>V13.0 全程餐厅图片版 | 专属 AI 助手</p>
+            <p>V14.0 终极深度导游版 | 专属 AI 助手</p>
         </footer>
     </div>
 
@@ -515,7 +547,7 @@ def generate_html(data):
                     <h2>${data.title}</h2>
                     <p style="margin-bottom: 15px;">${data.desc}</p>
                     ${data.tips ? `<div class="tips-card"><p>${data.tips}</p></div>` : ''}
-                    <h3 style="font-size: 15px; margin-top: 20px; margin-bottom: 12px; color: var(--text-sub); border-left: 4px solid var(--primary); padding-left: 8px;">📍 今日详细行程:</h3>
+                    <h3 style="font-size: 15px; margin-top: 20px; margin-bottom: 12px; color: var(--text-sub); border-left: 4px solid var(--primary); padding-left: 8px;">📍 详细行程情报:</h3>
                     ${poisHtml}
                 </div>
             `;
