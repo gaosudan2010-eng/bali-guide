@@ -1,7 +1,6 @@
 import os
 import datetime
 import json
-import sys
 
 def generate_html(data, itinerary, title, user_name, version):
     html_template = """
@@ -67,10 +66,10 @@ def generate_html(data, itinerary, title, user_name, version):
         .tab.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3); }
         .itinerary-card { background: white; border-radius: 24px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #F1F5F9; }
         .poi-item { display: block; background: #F8FAFC; border-radius: 20px; margin-bottom: 15px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid #E2E8F0; }
-        .poi-img { width: 100%; height: 130px; background-size: cover; background-position: center; }
+        .poi-img { width: 100%; height: 140px; background-size: cover; background-position: center; }
         .poi-details { padding: 12px 15px; }
-        .poi-details strong { display: block; font-size: 14px; }
-        .poi-info-text { font-size: 11px; color: var(--text-sub); margin-top: 3px; display: block; }
+        .poi-details strong { display: block; font-size: 15px; color: var(--text-main); }
+        .poi-info-text { font-size: 11px; color: var(--text-sub); margin-top: 4px; display: block; }
         .tips-card { background: #FFF7ED; padding: 15px; border-radius: 18px; border: 1px solid #FFEDD5; margin-bottom: 20px; }
         .tips-card p { margin: 0; font-size: 12px; color: #9A3412; line-height: 1.5; }
         #map { height: 180px; border-radius: 24px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 4px solid white; margin-bottom: 25px; }
@@ -117,15 +116,18 @@ def generate_html(data, itinerary, title, user_name, version):
             const poisHtml = data.pois.map(poi => `
                 <a href="${poi.link}" class="poi-item" target="_blank">
                     <div class="poi-img" style="background-image: url('${poi.img}')"></div>
-                    <div class="poi-details"><strong>${poi.name}</strong><span class="poi-info-text">${poi.info}</span></div>
+                    <div class="poi-details">
+                        <strong>${poi.name}</strong>
+                        <span class="poi-info-text">${poi.info}</span>
+                    </div>
                 </a>
             `).join('');
             document.getElementById('dayContent').innerHTML = `
                 <div class="itinerary-card">
                     <h2 style="font-size: 18px; margin: 0 0 10px; color: var(--primary-dark);">${data.title}</h2>
-                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 15px;">${data.desc}</p>
+                    <div style="font-size: 13px; line-height: 1.6; color: #4b5563; margin-bottom: 20px;">${data.desc}</div>
                     ${data.tips ? `<div class="tips-card"><p>${data.tips}</p></div>` : ''}
-                    <h3 style="font-size: 14px; margin: 20px 0 10px; color: var(--text-sub); border-left: 4px solid var(--primary); padding-left: 8px;">📍 行程清单:</h3>
+                    <h3 style="font-size: 14px; margin: 25px 0 12px; color: var(--text-sub); border-left: 4px solid var(--primary); padding-left: 8px;">📍 详细作战计划:</h3>
                     ${poisHtml}
                 </div>
             `;
@@ -157,51 +159,108 @@ def generate_html(data, itinerary, title, user_name, version):
     return html_content
 
 if __name__ == "__main__":
-    # OSaka 3-day shopping trip
+    # OSaka 3-day shopping trip - RICH VERSION
     itinerary_osaka = [
         {
             "day": 1,
-            "title": "心斋桥首战：潮流与美食",
-            "desc": "第一天直奔潮流最前线，从高奢百货到街头小店一网打尽。",
+            "title": "心斋桥作战：潮流前线与二次元天堂",
+            "desc": """
+                <b>上午：</b>落地关西机场后直奔难波站。下午首攻 <b>心斋桥 PARCO</b>。这里不仅有最前沿的服饰，6 楼更是 PM 必须要打卡的“圣地”。<br><br>
+                <b>下午：</b>漫步心斋桥筋商店街，扫荡大国药妆和唐吉诃德。这里是体验大阪“烟火气”与商业繁荣的最佳地点。
+            """,
             "pois": [
-                {"name": "心斋桥 PARCO", "lat": 34.6748, "lon": 135.5002, "img": "https://images.unsplash.com/photo-1590233156170-0720516b349e?auto=format&fit=crop&w=400&q=80", "info": "🛍️ 潮流中心 | 亮点: 二次元专层 | 游玩: 3h", "link": "https://shinsaibashi.parco.jp/"},
-                {"name": "午餐：道顿堀一兰拉面", "lat": 34.6690, "lon": 135.5015, "img": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80", "info": "🍜 经典必吃 | 排队提示: 建议11点前去", "link": "https://www.tripadvisor.cn/Restaurant_Review-g298566-d1667083-Reviews-Ichiran_Dotonbori_Main_Store-Chuo_Osaka_Osaka_Prefecture_Kinki.html"},
-                {"name": "晚餐：蟹道乐本店", "lat": 34.6688, "lon": 135.5012, "img": "https://images.unsplash.com/photo-1559628233-eb1b1a45564b?auto=format&fit=crop&w=400&q=80", "info": "🦀 全蟹宴 | 建议: 提前预约 | 人均: 8000 JPY", "link": "https://douraku.co.jp/"}
+                {
+                    "name": "心斋桥 PARCO (6F 圣地)", 
+                    "lat": 34.6748, "lon": 135.5002, 
+                    "img": "https://images.unsplash.com/photo-1590233156170-0720516b349e?auto=format&fit=crop&w=400&q=80", 
+                    "info": "🎮 亮点: 任天堂+皮卡丘中心 | 游玩: 3h | 适合 PM 调研周边生态", 
+                    "link": "https://shinsaibashi.parco.jp/"
+                },
+                {
+                    "name": "午餐：道顿堀一兰拉面", 
+                    "lat": 34.6690, "lon": 135.5015, 
+                    "img": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80", 
+                    "info": "🍜 经典必吃 | 提示: 扫码取号 | 必点: 浓郁汤底+半熟蛋", 
+                    "link": "https://www.ichiran.com/"
+                },
+                {
+                    "name": "晚餐：蟹道乐 (本店)", 
+                    "lat": 34.6688, "lon": 135.5012, 
+                    "img": "https://images.unsplash.com/photo-1559628233-eb1b1a45564b?auto=format&fit=crop&w=400&q=80", 
+                    "info": "🦀 全蟹宴 | 预约提示: 需提前官网订位 | 人均: 8000 JPY", 
+                    "link": "https://douraku.co.jp/"
+                }
             ],
-            "tips": "💡 贴士：PARCO 的 6 楼是任天堂和皮卡丘中心，PM 必打卡！"
+            "tips": "💡 <b>导游建议：</b>PARCO 的 6 楼经常需要限流领券，建议一进楼先冲 6 楼领券再逛底下的服饰。"
         },
         {
             "day": 2,
-            "title": "梅田激战：百货与黑科技",
-            "desc": "在全日本最复杂的迷宫里，搜刮最齐全的化妆品和电子产品。",
+            "title": "梅田激战：百货迷宫与黑科技扫荡",
+            "desc": """
+                <b>全天安排：</b>挑战号称“日本最难迷宫”的梅田商圈。这里聚集了全日本最齐全的化妆品柜台和最高密度的电子产品百货。<br><br>
+                <b>攻略重点：</b>上午扫荡 <b>阪急百货</b> 的美妆柜台，下午在 <b>Yodobashi</b> 体验日本最硬核的黑科技零售生态。
+            """,
             "pois": [
-                {"name": "阪急百货 梅田本店", "lat": 34.7025, "lon": 135.4985, "img": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80", "info": "💎 高端百货 | 亮点: 化妆品超级齐全 | 游玩: 4h", "link": "https://www.hankyu-dept.co.jp/"},
-                {"name": "午餐：叙叙苑烧肉 (梅田)", "lat": 34.7030, "lon": 135.4950, "img": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", "info": "🥩 高级烧肉 | 亮点: 落地窗看景观 | 人均: 4000 JPY", "link": "https://www.jojoen.co.jp/"},
-                {"name": "Yodobashi Camera", "lat": 34.7042, "lon": 135.4965, "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80", "info": "📸 电子天堂 | 提示: 记得带护照退税", "link": "https://www.yodobashi.com/"}
+                {
+                    "name": "阪急百货 梅田本店", 
+                    "lat": 34.7025, "lon": 135.4985, 
+                    "img": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80", 
+                    "info": "💎 贵妇美妆 | 亮点: 2F 集中了全日本最全专柜 | 记得先领 95 折券", 
+                    "link": "https://www.hankyu-dept.co.jp/"
+                },
+                {
+                    "name": "午餐：叙叙苑 (Grand Front 店)", 
+                    "lat": 34.7030, "lon": 135.4950, 
+                    "img": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", 
+                    "info": "🥩 绝景烧肉 | 建议: 选午间套餐性价比极高 | 人均: 4000 JPY", 
+                    "link": "https://www.jojoen.co.jp/"
+                },
+                {
+                    "name": "Yodobashi Camera Multimedia", 
+                    "lat": 34.7042, "lon": 135.4965, 
+                    "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80", 
+                    "info": "📸 电子天堂 | 必逛: 最新 AI 相机、美容仪 | 提示: 出示护照直接免税", 
+                    "link": "https://www.yodobashi.com/"
+                }
             ],
-            "tips": "👟 预警：梅田地下街非常容易迷路，建议全程开启 Google Maps。"
+            "tips": "👟 <b>导游建议：</b>梅田地下街是 3D 迷宫，找路时请认准天花板的标识，比手机地图更管用。"
         },
         {
             "day": 3,
-            "title": "临空城：最后的疯狂采购",
-            "desc": "去机场前的最后一站，在大牌奥特莱斯把行李箱塞满。",
+            "title": "临空城：登机前的最后“回血”扫货",
+            "desc": """
+                <b>行程亮点：</b>去机场前最后的“行李箱扩容”环节。临空城 Outlets 就在关西机场对面，是全大阪最适合扫荡国际大牌和运动装备的地方。<br><br>
+                <b>午餐特别推荐：</b>在 <b>无添藏（Kura Sushi）</b> 体验传送带寿司，顺便玩一把扭蛋游戏，圆满结束日本行。
+            """,
             "pois": [
-                {"name": "临空城 Outlets", "lat": 34.3980, "lon": 135.2980, "img": "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&q=80", "info": "🏷️ 优惠天堂 | 耗时: 3-5h | 靠近关西机场", "link": "https://www.premiumoutlets.co.jp/rinku/"},
-                {"name": "午餐：Kura Sushi", "lat": 34.3990, "lon": 135.2990, "img": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80", "info": "🍣 旋转寿司 | 亮点: 抽奖扭蛋 | 游玩: 1h", "link": "https://www.kurasushi.co.jp/"}
+                {
+                    "name": "临空城 Premium Outlets", 
+                    "lat": 34.3980, "lon": 135.2980, 
+                    "img": "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&q=80", 
+                    "info": "🏷️ 打折天堂 | 耗时: 4h | 提示: 服务中心先领额外优惠券", 
+                    "link": "https://www.premiumoutlets.co.jp/rinku/"
+                },
+                {
+                    "name": "午餐：无添藏旋转寿司", 
+                    "lat": 34.3990, "lon": 135.2990, 
+                    "img": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80", 
+                    "info": "🍣 趣味日料 | 亮点: 每 5 盘可以玩一次扭蛋 | 人均: 2500 JPY", 
+                    "link": "https://www.kurasushi.co.jp/"
+                }
             ],
-            "tips": "✈️ 提示：奥特莱斯有直达大巴去关西机场，仅需 20 分钟。"
+            "tips": "✈️ <b>登机贴士：</b>Outlets 有专门的机场接驳巴士（Sky Shuttle），仅需 20 分钟即可抵达航站楼。"
         }
     ]
 
     data = {
-        'weather': '大阪 9°C 局部多云',
+        'weather': '大阪 9°C 晴间多云',
         'exchange_rate': '1 CNY ≈ 22.52 JPY',
         'hero_img': 'https://images.unsplash.com/photo-1590259615474-ad7b936689ce?auto=format&fit=crop&w=800&q=80'
     }
 
-    html_osaka = generate_html(data, itinerary_osaka, "大阪 3 日购物狂欢", "松松", "Multi-Travel Pro V1.0")
+    html_osaka = generate_html(data, itinerary_osaka, "大阪 3 日购物狂欢作战手册", "松松", "Multi-Travel Pro V1.1")
     
     output_path = '/Users/sudandan/.openclaw/workspace/bali-guide/osaka/index.html'
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html_osaka)
-    print(f"Osaka guide generated at {output_path}")
+    print(f"Osaka guide updated at {output_path}")
