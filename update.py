@@ -19,8 +19,8 @@ def generate_html(data):
                 抵达巴厘岛机场 (Ngurah Rai) 后，完成入境及海关申报。由于带着三岁宝宝且行李较多，建议提前预订酒店接机或使用 Grab/Klook 专车。车程约 20-30 分钟。
                 <br><br>
                 <b>🍽️ 晚餐建议：</b><br>
-                • <b>首选：Ikan Restaurant</b> (威斯汀酒店内，就在沙滩边)。可以吹着海风享用地道的印尼烧烤或海鲜，非常适合第一晚的放松氛围。<br>
-                • <b>亲子备选：Prego</b> (威斯汀内意大利餐厅)。这里有专门的儿童菜单和游戏区，三岁宝宝会非常开心。
+                • <b>首选：Ikan Restaurant</b> (威斯汀酒店内)。在沙滩边吹海风享用印尼烧烤，宝宝可以直接在旁边的沙滩玩耍。<br>
+                • <b>备选：Prego</b> (威斯汀内意大利餐厅)。有专门的儿童菜单和游戏区，三岁宝宝绝对坐得住。
             """,
             "pois": [
                 {"name": "巴厘岛国际机场 (DPS)", "lat": -8.7482, "lon": 115.1675, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g294226-d2279188-Reviews-Ngurah_Rai_International_Airport-Kuta_Bali.html"},
@@ -28,84 +28,128 @@ def generate_html(data):
             ],
             "tips": """
                 <b>🛡️ 专业导游提醒：</b><br>
-                1. <b>香港转机：</b>由于转机时间仅 1.5 小时，请下飞机后迅速寻找 'Transfer' 指引，并确认下一程登机口。<br>
-                2. <b>入境流程：</b>下飞机后依次完成：购买 VOA (或出示 e-VOA) ➔ 边检 ➔ 提取行李 ➔ 扫描海关码 (e-CD)。<br>
-                3. <b>接机口：</b>走出玻璃门后，会有密集的接机人群，请耐心寻找写有您名字或 'Westin' 的牌子。
+                1. <b>香港转机：</b>1.5小时较紧凑，下飞机后请迅速寻找 'Transfer' 指引。<br>
+                2. <b>入境：</b>购买 VOA ➔ 边检 ➔ 提行李 ➔ 扫海关码 (e-CD)。<br>
+                3. <b>接机口：</b>走出玻璃门后，在密集的牌子中寻找写有您名字或 'Westin' 的接机员。
             """
         },
         {
             "day": 2,
             "date": "2月12日",
-            "title": "努沙杜瓦亲子时光",
+            "title": "努沙杜瓦：阳光、沙滩与童话",
             "hotel": "The Westin Resort Nusa Dua",
-            "desc": "上午参加威斯汀儿童俱乐部的活动。下午前往海盗湾餐厅，在巨大的海盗船和树屋上用餐，这是孩子们最喜欢的体验。",
+            "desc": """
+                <b>🏖️ 全日安排：</b><br>
+                • <b>上午：</b>威斯汀儿童俱乐部 (Westin Family Kids Club)。这是全岛顶尖的托管中心，有手工、乐高和户外游戏。<br>
+                • <b>下午：</b>在努沙杜瓦宁静的海滩玩沙，或在酒店的亲子泳池嬉水。这里海浪极小，非常适合三岁宝宝。<br>
+                <br>
+                <b>🍽️ 午晚餐建议：</b><br>
+                • <b>午餐：Seasonal Tastes</b> (酒店内)。提供丰富的国际自助和零点，环境通透。<br>
+                • <b>晚餐：The Pirate's Bay</b> (步行或打车 5 分钟)。这是一个以海盗为主题的海滨餐厅，有一艘巨大的木制海盗船和许多树屋，宝宝可以变身“小海盗”。
+            """,
             "pois": [
-                {"name": "The Pirate's Bay Bali", "lat": -8.7925, "lon": 115.2335, "type": "dining", "link": "https://www.tripadvisor.cn/Restaurant_Review-g297698-d3493863-Reviews-The_Pirate_s_Bay-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"},
-                {"name": "Nusa Dua Beach", "lat": -8.7960, "lon": 115.2320, "type": "beach", "link": "https://www.tripadvisor.cn/Attraction_Review-g297698-d1045931-Reviews-Nusa_Dua_Beach-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"}
-            ]
+                {"name": "Westin Family Kids Club", "lat": -8.7945, "lon": 115.2310, "type": "kids", "link": "https://www.marriott.com/en-us/hotels/dpswi-the-westin-resort-nusa-dua-bali/overview/"},
+                {"name": "The Pirate's Bay Bali", "lat": -8.7925, "lon": 115.2335, "type": "dining", "link": "https://www.tripadvisor.cn/Restaurant_Review-g297698-d3493863-Reviews-The_Pirate_s_Bay-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"}
+            ],
+            "tips": "💡 导游建议：威斯汀的 Kids Club 有些课程需要提前预约，建议早餐后先去前台领一份当天的活动表。"
         },
         {
             "day": 3,
             "date": "2月13日",
-            "title": "壮丽悬崖与日落",
+            "title": "悬崖日落与海上火舞",
             "hotel": "The Westin Resort Nusa Dua",
-            "desc": "参观南端的神奇喷泉 Waterblow。傍晚前往乌鲁瓦图情人崖，观看壮丽的海上日落和精彩的 Kecak 舞蹈表演。注意避开猴子！",
+            "desc": """
+                <b>📷 行程亮点：</b><br>
+                • <b>上午：</b>Waterblow。观看巨大的浪花在礁石间喷涌而出的壮观场景。<br>
+                • <b>下午：</b>包车前往乌鲁瓦图 (Uluwatu)。参观悬崖上的情人崖神庙。傍晚在悬崖剧场观看举世闻名的 Kecak 火舞表演 (18:00 开始)。<br>
+                <br>
+                <b>🍽️ 晚餐建议：</b><br>
+                • <b>特色推荐：Jimbaran Seafood</b> (金巴兰海滩)。看完表演后回程经过，在沙滩上吃烛光海鲜。虽然有点游客化，但仪式感拉满。
+            """,
             "pois": [
                 {"name": "Waterblow", "lat": -8.8012, "lon": 115.2355, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g297698-d3527715-Reviews-Water_Blow-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"},
-                {"name": "Uluwatu Temple", "lat": -8.8291, "lon": 115.0849, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d379333-Reviews-Uluwatu_Temple-Uluwatu_Bukit_Peninsula_Bali.html"}
-            ]
+                {"name": "Uluwatu Temple (情人崖)", "lat": -8.8291, "lon": 115.0849, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d379333-Reviews-Uluwatu_Temple-Uluwatu_Bukit_Peninsula_Bali.html"}
+            ],
+            "tips": "🐒 避坑警报：乌鲁瓦图情人崖的猴子非常调皮，请务必藏好您的眼镜、帽子和车钥匙！"
         },
         {
             "day": 4,
             "date": "2月14日",
-            "title": "前往乌布丛林",
+            "title": "逃离城市，潜入乌布丛林",
             "hotel": "Maya Ubud Resort & Spa",
-            "desc": "退房后前往乌布，中途可停留艺术村。入住玛雅乌布度假村，感受巴厘岛的森林气息。晚上在乌布皇宫附近享用地道脏鸭餐。",
+            "desc": """
+                <b>🌿 换宿之旅：</b><br>
+                • <b>上午：</b>退房后包车前往乌布。中途停留 <b>Tegenungan Waterfall</b>。瀑布气势磅礴，可以在岸边拍照。<br>
+                • <b>下午：</b>入住 Maya Ubud。这是一个被森林环抱的世外桃源。带宝宝在河畔无边泳池玩耍，听溪水声。<br>
+                <br>
+                <b>🍽️ 晚餐建议：</b><br>
+                • <b>首选：Bebek Bengil (Dirty Duck Diner)</b>。巴厘岛最著名的脏鸭餐。餐厅后面有一大片稻田，宝宝可以跑来跑去，环境极佳。
+            """,
             "pois": [
-                {"name": "Maya Ubud Resort & Spa", "lat": -8.5081, "lon": 115.2758, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g297701-d305615-Reviews-Maya_Ubud_Resort_Spa-Ubud_Gianyar_Regency_Bali.html"},
+                {"name": "Tegenungan Waterfall", "lat": -8.5752, "lon": 115.2903, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d8525287-Reviews-Tegenungan_Waterfall-Ubud_Gianyar_Regency_Bali.html"},
                 {"name": "Bebek Bengil (脏鸭餐)", "lat": -8.5147, "lon": 115.2647, "type": "dining", "link": "https://www.tripadvisor.cn/Restaurant_Review-g297701-d786438-Reviews-Bebek_Bengil-Ubud_Gianyar_Regency_Bali.html"}
-            ]
+            ],
+            "tips": "🧳 交通贴士：努沙杜瓦到乌布车程约 1.5 小时，路况可能拥堵，请给宝宝备好零食和水。"
         },
         {
             "day": 5,
             "date": "2月15日",
-            "title": "猴子林与亲子咖啡",
+            "title": "丛林里的精灵与意式下午茶",
             "hotel": "Maya Ubud Resort & Spa",
-            "desc": "步行探索乌布圣猴林。下午前往全巴厘岛最出名的亲子餐厅 Milk & Madu，那里有专门的儿童游戏室和美味的披萨。",
+            "desc": """
+                <b>🐒 探索乌布：</b><br>
+                • <b>上午：</b>圣猴森林 (Sacred Monkey Forest)。在古树参天的森林里看猴子嬉戏。这里的猴子相对礼貌，但仍建议保持距离。<br>
+                • <b>下午：</b>前往 <b>Milk & Madu Ubud</b>。这是全乌布最推荐的亲子餐厅，有专门的儿童游戏室和极其好吃的披萨/下午茶。<br>
+                <br>
+                <b>🍽️ 晚餐建议：</b><br>
+                • <b>亲子推荐：Clear Cafe</b>。极具设计感的餐厅，进门要脱鞋，宝宝可以在软垫上爬，食物新鲜且健康。
+            """,
             "pois": [
-                {"name": "Sacred Monkey Forest", "lat": -8.5188, "lon": 115.2585, "type": "kids", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d379334-Reviews-Sacred_Monkey_Forest_Sanctuary-Ubud_Gianyar_Regency_Bali.html"},
+                {"name": "Sacred Monkey Forest (圣猴林)", "lat": -8.5188, "lon": 115.2585, "type": "kids", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d379334-Reviews-Sacred_Monkey_Forest_Sanctuary-Ubud_Gianyar_Regency_Bali.html"},
                 {"name": "Milk & Madu Ubud", "lat": -8.5065, "lon": 115.2625, "type": "dining", "link": "https://www.tripadvisor.cn/Restaurant_Review-g297701-d14144365-Reviews-Milk_Madu_Ubud-Ubud_Gianyar_Regency_Bali.html"}
-            ]
+            ],
+            "tips": "👟 穿衣建议：乌布步行较多且路面不平，请给宝宝穿上防滑舒适的运动鞋。"
         },
         {
             "day": 6,
             "date": "2月16日",
-            "title": "梯田与圣泉祈福",
+            "title": "绿色梯田与圣泉洗礼",
             "hotel": "Maya Ubud Resort & Spa",
-            "desc": "早起避开人群前往德格拉朗梯田。随后参观圣泉寺，体验巴厘岛的宗教文化。下午回酒店享受玛雅乌布著名的无边泳池。",
+            "desc": """
+                <b>🙏 文化沉浸：</b><br>
+                • <b>上午：</b>德格拉朗梯田 (Tegalalang)。感受巴厘岛标志性的绿色波浪。随后前往圣泉寺 (Tirta Empul)，看信徒在泉水中祈福。<br>
+                • <b>下午：</b>回到酒店享受 Spa 或继续在森林中放空。<br>
+                <br>
+                <b>🍽️ 晚餐建议：</b><br>
+                • <b>告别晚宴：Sayan House</b>。俯瞰阿勇河谷的壮丽景色，主打日系和印尼融合菜，日落时分美得令人心碎。需要提前预约。
+            """,
             "pois": [
                 {"name": "Tegalalang Rice Terrace", "lat": -8.4312, "lon": 115.2800, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d2279188-Reviews-Tegalalang_Rice_Terrace-Ubud_Gianyar_Regency_Bali.html"},
-                {"name": "Tirta Empul Temple", "lat": -8.4162, "lon": 115.2895, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d379331-Reviews-Tirta_Empul_Temple-Ubud_Gianyar_Regency_Bali.html"}
-            ]
+                {"name": "Tirta Empul Temple (圣泉寺)", "lat": -8.4162, "lon": 115.2895, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d379331-Reviews-Tirta_Empul_Temple-Ubud_Gianyar_Regency_Bali.html"}
+            ],
+            "tips": "📸 摄影建议：德格拉朗梯田建议 9 点前到达，光线最美且避开人群。"
         },
         {
             "day": 7,
             "date": "2月17日",
-            "title": "启程回京",
-            "hotel": "Regala Skycity Hotel",
+            "title": "带上回忆，启程回家",
+            "hotel": "Regala Skycity Hotel (Hong Kong)",
             "desc": """
                 <b>✈️ 飞行计划：</b><br>
                 • <b>第一程：</b>巴厘岛 (DPS) 16:20 ➔ 香港 (HKG) 21:10 (CX784)<br>
                 • <b>第二程：</b>香港 (HKG) 10:15 ➔ 北京 (PEK) 13:50 (次日 CX348)<br>
                 <br>
-                <b>🏨 住宿安排：</b><br>
-                抵达香港后入住 Regala Skycity。酒店位于 11 SKIES 航天城，非常适合休息和补货。
+                <b>🏨 中转安排：</b><br>
+                落地香港后直接入住 Regala Skycity。酒店与 11 SKIES 航天城直连，如果您还有精力，可以去买点礼物。<br>
+                <br>
+                <b>🍽️ 早餐建议：</b><br>
+                • 次日早餐可以在酒店享用，也可以在香港机场尝试著名的<b>何洪记</b>或<b>太兴</b>烧味，作为旅行圆满结束。
             """,
             "pois": [
                 {"name": "Regala Skycity Hotel", "lat": 22.2985, "lon": 113.9360, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g294217-d23821034-Reviews-Regala_Skycity_Hotel-Hong_Kong.html"},
-                {"name": "香港国际机场 (HKG)", "lat": 22.3080, "lon": 113.9185, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g294217-d2279188-Reviews-Hong_Kong_International_Airport-Hong_Kong.html"}
+                {"name": "11 SKIES 航天城", "lat": 22.3000, "lon": 113.9380, "type": "attraction", "link": "https://www.11skies.com/zh-hk"}
             ],
-            "tips": "💡 温馨提示：巴厘岛机场免税店值得一逛。回程行李请在柜台确认是否直挂北京。"
+            "tips": "🛍️ 购物提示：巴厘岛出境前可以买一点椰子饼干或手工皂。回程行李在值机时务必确认是否直挂北京。"
         }
     ]
 
@@ -374,7 +418,7 @@ def generate_html(data):
         
         <footer class="footer">
             <p>由 <strong>songsong的小跟班</strong> 为您精心打造</p>
-            <p>V10.0 专业管家版 | 专属 AI 助手</p>
+            <p>V11.0 专业导游全流程版 | 专属 AI 助手</p>
         </footer>
     </div>
 
