@@ -1,0 +1,207 @@
+import os
+import datetime
+import json
+import sys
+
+def generate_html(data, itinerary, title, user_name, version):
+    html_template = """
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{TITLE} | songsong的小跟班</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+        :root {
+            --primary: #FF4757;
+            --primary-dark: #ED225D;
+            --accent: #FFD32A;
+            --bg-gradient: linear-gradient(180deg, #FFF5F5 0%, #FFFFFF 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #2F3542;
+            --text-sub: #747D8C;
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Outfit', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            margin: 0; padding: 0; min-height: 100vh;
+        }
+        .app-container {
+            max-width: 480px; margin: 0 auto; background: #fff; min-height: 100vh;
+            position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.05);
+        }
+        .hero {
+            position: relative; height: 180px;
+            background: url('{HERO_IMG}') center/cover;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 30px 20px; color: white; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { margin: 0; font-size: 24px; font-weight: 700; }
+        .hero p { margin: 5px 0 0; opacity: 0.9; font-size: 13px; }
+        .content-body { padding: 20px; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: -40px; position: relative; z-index: 10; }
+        .stat-card {
+            background: var(--card-bg); backdrop-filter: blur(10px); padding: 12px; border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: center; border: 1px solid rgba(255,255,255,0.3);
+        }
+        .stat-card i { font-size: 18px; color: var(--primary); margin-bottom: 5px; }
+        .stat-card span { display: block; font-size: 10px; color: var(--text-sub); text-transform: uppercase; }
+        .stat-card strong { display: block; font-size: 14px; margin-top: 2px; }
+        .day-tabs { display: flex; overflow-x: auto; gap: 10px; margin: 25px 0 15px; padding-bottom: 5px; scrollbar-width: none; }
+        .day-tabs::-webkit-scrollbar { display: none; }
+        .tab {
+            flex: 0 0 auto; padding: 10px 18px; border-radius: 15px; background: #F1F5F9;
+            color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer;
+        }
+        .tab.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3); }
+        .itinerary-card { background: white; border-radius: 24px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #F1F5F9; }
+        .poi-item { display: block; background: #F8FAFC; border-radius: 20px; margin-bottom: 15px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid #E2E8F0; }
+        .poi-img { width: 100%; height: 130px; background-size: cover; background-position: center; }
+        .poi-details { padding: 12px 15px; }
+        .poi-details strong { display: block; font-size: 14px; }
+        .poi-info-text { font-size: 11px; color: var(--text-sub); margin-top: 3px; display: block; }
+        .tips-card { background: #FFF7ED; padding: 15px; border-radius: 18px; border: 1px solid #FFEDD5; margin-bottom: 20px; }
+        .tips-card p { margin: 0; font-size: 12px; color: #9A3412; line-height: 1.5; }
+        #map { height: 180px; border-radius: 24px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 4px solid white; margin-bottom: 25px; }
+        .footer { text-align: center; padding: 30px 20px; font-size: 11px; color: var(--text-sub); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="hero">
+            <div class="hero-content">
+                <div style="font-size: 10px; opacity: 0.8; margin-bottom: 5px;">最后更新: {UPDATE_TIME}</div>
+                <h1>{TITLE}</h1>
+                <p>你好 {USER_NAME}！您的专属导游已就绪。</p>
+            </div>
+        </header>
+        <div class="content-body">
+            <div class="stats-grid">
+                <div class="stat-card"><i class="fas fa-cloud"></i><span>当地天气</span><strong>{WEATHER}</strong></div>
+                <div class="stat-card"><i class="fas fa-yen-sign"></i><span>实时汇率</span><strong>{EXCHANGE}</strong></div>
+            </div>
+            <div class="day-tabs" id="dayTabs"></div>
+            <div id="map"></div>
+            <div id="dayContent"></div>
+        </div>
+        <footer class="footer">
+            <p>由 <strong>songsong的小跟班</strong> 为您精心打造</p>
+            <p>{VERSION} | 专属 AI 助手</p>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const itineraryData = {ITINERARY_JSON};
+        let currentDay = 1; let map, markersGroup, polyline;
+        function initMap() {
+            map = L.map('map', {zoomControl: false}).setView([34.6937, 135.5023], 12);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
+            markersGroup = L.layerGroup().addTo(map);
+        }
+        function updateDay(day) {
+            currentDay = day; const data = itineraryData.find(d => d.day === day);
+            document.getElementById('dayTabs').innerHTML = itineraryData.map(d => `
+                <div class="tab ${d.day === day ? 'active' : ''}" onclick="updateDay(${d.day})">Day ${d.day}</div>
+            `).join('');
+            const poisHtml = data.pois.map(poi => `
+                <a href="${poi.link}" class="poi-item" target="_blank">
+                    <div class="poi-img" style="background-image: url('${poi.img}')"></div>
+                    <div class="poi-details"><strong>${poi.name}</strong><span class="poi-info-text">${poi.info}</span></div>
+                </a>
+            `).join('');
+            document.getElementById('dayContent').innerHTML = `
+                <div class="itinerary-card">
+                    <h2 style="font-size: 18px; margin: 0 0 10px; color: var(--primary-dark);">${data.title}</h2>
+                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 15px;">${data.desc}</p>
+                    ${data.tips ? `<div class="tips-card"><p>${data.tips}</p></div>` : ''}
+                    <h3 style="font-size: 14px; margin: 20px 0 10px; color: var(--text-sub); border-left: 4px solid var(--primary); padding-left: 8px;">📍 行程清单:</h3>
+                    ${poisHtml}
+                </div>
+            `;
+            markersGroup.clearLayers(); if (polyline) polyline.remove();
+            const latlngs = data.pois.filter(p => p.lat && p.lon).map(p => [p.lat, p.lon]);
+            data.pois.filter(p => p.lat && p.lon).forEach(p => L.marker([p.lat, p.lon]).addTo(markersGroup).bindPopup(p.name));
+            if (latlngs.length > 1) { polyline = L.polyline(latlngs, {color: 'var(--primary)', weight: 3}).addTo(map); map.fitBounds(polyline.getBounds(), {padding: [30, 30]}); }
+            else if (latlngs.length === 1) map.setView(latlngs[0], 15);
+        }
+        window.onload = () => { initMap(); updateDay(1); };
+    </script>
+</body>
+</html>
+"""
+    
+    # Process itinerary data to JSON
+    itinerary_json = json.dumps(itinerary, ensure_ascii=False)
+    
+    # Replace placeholders
+    html_content = html_template.replace("{UPDATE_TIME}", datetime.datetime.now().strftime('%Y-%m-%d %H:%M'))
+    html_content = html_content.replace("{WEATHER}", data.get('weather', 'N/A'))
+    html_content = html_content.replace("{EXCHANGE}", data.get('exchange_rate', 'N/A'))
+    html_content = html_content.replace("{ITINERARY_JSON}", itinerary_json)
+    html_content = html_content.replace("{TITLE}", title)
+    html_content = html_content.replace("{USER_NAME}", user_name)
+    html_content = html_content.replace("{VERSION}", version)
+    html_content = html_content.replace("{HERO_IMG}", data.get('hero_img', ''))
+    
+    return html_content
+
+if __name__ == "__main__":
+    # OSaka 3-day shopping trip
+    itinerary_osaka = [
+        {
+            "day": 1,
+            "title": "心斋桥首战：潮流与美食",
+            "desc": "第一天直奔潮流最前线，从高奢百货到街头小店一网打尽。",
+            "pois": [
+                {"name": "心斋桥 PARCO", "lat": 34.6748, "lon": 135.5002, "img": "https://images.unsplash.com/photo-1590233156170-0720516b349e?auto=format&fit=crop&w=400&q=80", "info": "🛍️ 潮流中心 | 亮点: 二次元专层 | 游玩: 3h", "link": "https://shinsaibashi.parco.jp/"},
+                {"name": "午餐：道顿堀一兰拉面", "lat": 34.6690, "lon": 135.5015, "img": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80", "info": "🍜 经典必吃 | 排队提示: 建议11点前去", "link": "https://www.tripadvisor.cn/Restaurant_Review-g298566-d1667083-Reviews-Ichiran_Dotonbori_Main_Store-Chuo_Osaka_Osaka_Prefecture_Kinki.html"},
+                {"name": "晚餐：蟹道乐本店", "lat": 34.6688, "lon": 135.5012, "img": "https://images.unsplash.com/photo-1559628233-eb1b1a45564b?auto=format&fit=crop&w=400&q=80", "info": "🦀 全蟹宴 | 建议: 提前预约 | 人均: 8000 JPY", "link": "https://douraku.co.jp/"}
+            ],
+            "tips": "💡 贴士：PARCO 的 6 楼是任天堂和皮卡丘中心，PM 必打卡！"
+        },
+        {
+            "day": 2,
+            "title": "梅田激战：百货与黑科技",
+            "desc": "在全日本最复杂的迷宫里，搜刮最齐全的化妆品和电子产品。",
+            "pois": [
+                {"name": "阪急百货 梅田本店", "lat": 34.7025, "lon": 135.4985, "img": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80", "info": "💎 高端百货 | 亮点: 化妆品超级齐全 | 游玩: 4h", "link": "https://www.hankyu-dept.co.jp/"},
+                {"name": "午餐：叙叙苑烧肉 (梅田)", "lat": 34.7030, "lon": 135.4950, "img": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80", "info": "🥩 高级烧肉 | 亮点: 落地窗看景观 | 人均: 4000 JPY", "link": "https://www.jojoen.co.jp/"},
+                {"name": "Yodobashi Camera", "lat": 34.7042, "lon": 135.4965, "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80", "info": "📸 电子天堂 | 提示: 记得带护照退税", "link": "https://www.yodobashi.com/"}
+            ],
+            "tips": "👟 预警：梅田地下街非常容易迷路，建议全程开启 Google Maps。"
+        },
+        {
+            "day": 3,
+            "title": "临空城：最后的疯狂采购",
+            "desc": "去机场前的最后一站，在大牌奥特莱斯把行李箱塞满。",
+            "pois": [
+                {"name": "临空城 Outlets", "lat": 34.3980, "lon": 135.2980, "img": "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&q=80", "info": "🏷️ 优惠天堂 | 耗时: 3-5h | 靠近关西机场", "link": "https://www.premiumoutlets.co.jp/rinku/"},
+                {"name": "午餐：Kura Sushi", "lat": 34.3990, "lon": 135.2990, "img": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80", "info": "🍣 旋转寿司 | 亮点: 抽奖扭蛋 | 游玩: 1h", "link": "https://www.kurasushi.co.jp/"}
+            ],
+            "tips": "✈️ 提示：奥特莱斯有直达大巴去关西机场，仅需 20 分钟。"
+        }
+    ]
+
+    data = {
+        'weather': '大阪 9°C 局部多云',
+        'exchange_rate': '1 CNY ≈ 22.52 JPY',
+        'hero_img': 'https://images.unsplash.com/photo-1590259615474-ad7b936689ce?auto=format&fit=crop&w=800&q=80'
+    }
+
+    html_osaka = generate_html(data, itinerary_osaka, "大阪 3 日购物狂欢", "松松", "Multi-Travel Pro V1.0")
+    
+    output_path = '/Users/sudandan/.openclaw/workspace/bali-guide/osaka/index.html'
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(html_osaka)
+    print(f"Osaka guide generated at {output_path}")
