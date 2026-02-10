@@ -8,19 +8,20 @@ def generate_html(data):
         {
             "day": 1,
             "date": "2月11日",
-            "title": "抵达与休整",
-            "hotel": "Westin Nusa Dua",
-            "desc": "北京经香港抵达巴厘岛。办理入住威斯汀度假酒店，享受全岛顶级的亲子设施。第一天建议在酒店沙滩和泳池放松，缓解旅途劳累。",
+            "title": "启程：北京-香港-巴厘岛",
+            "hotel": "The Westin Resort Nusa Dua",
+            "desc": "✈️ 航班信息：北京-香港 (07:30) | 香港-巴厘岛 (12:35)。抵达后入住威斯汀。第一天建议在酒店沙滩和泳池放松，缓解飞行劳累。",
             "pois": [
-                {"name": "Westin Nusa Dua", "lat": -8.7941, "lon": 115.2302, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g297698-d302324-Reviews-The_Westin_Resort_Nusa_Dua_Bali-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"},
-                {"name": "威斯汀儿童俱乐部", "lat": -8.7945, "lon": 115.2310, "type": "kids", "link": "https://www.marriott.com/en-us/hotels/dpswi-the-westin-resort-nusa-dua-bali/overview/"}
-            ]
+                {"name": "北京首都国际机场 (PEK)", "lat": 40.0799, "lon": 116.6031, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g294212-d2279188-Reviews-Beijing_Capital_International_Airport-Beijing.html"},
+                {"name": "The Westin Resort Nusa Dua", "lat": -8.7941, "lon": 115.2302, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g297698-d302324-Reviews-The_Westin_Resort_Nusa_Dua_Bali-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"}
+            ],
+            "tips": "💡 入境提示：请提前准备好 e-VoA 电子签、Bali Levy 缴纳证明和 e-CD 海关申报码。巴厘岛刷牙建议也用瓶装水。"
         },
         {
             "day": 2,
             "date": "2月12日",
             "title": "努沙杜瓦亲子时光",
-            "hotel": "Westin Nusa Dua",
+            "hotel": "The Westin Resort Nusa Dua",
             "desc": "上午参加威斯汀儿童俱乐部的活动。下午前往海盗湾餐厅，在巨大的海盗船和树屋上用餐，这是孩子们最喜欢的体验。",
             "pois": [
                 {"name": "The Pirate's Bay Bali", "lat": -8.7925, "lon": 115.2335, "type": "dining", "link": "https://www.tripadvisor.cn/Restaurant_Review-g297698-d3493863-Reviews-The_Pirate_s_Bay-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"},
@@ -31,7 +32,7 @@ def generate_html(data):
             "day": 3,
             "date": "2月13日",
             "title": "壮丽悬崖与日落",
-            "hotel": "Westin Nusa Dua",
+            "hotel": "The Westin Resort Nusa Dua",
             "desc": "参观南端的神奇喷泉 Waterblow。傍晚前往乌鲁瓦图情人崖，观看壮丽的海上日落和精彩的 Kecak 舞蹈表演。注意避开猴子！",
             "pois": [
                 {"name": "Waterblow", "lat": -8.8012, "lon": 115.2355, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g297698-d3527715-Reviews-Water_Blow-Nusa_Dua_Nusa_Dua_Peninsula_Bali.html"},
@@ -42,10 +43,10 @@ def generate_html(data):
             "day": 4,
             "date": "2月14日",
             "title": "前往乌布丛林",
-            "hotel": "Maya Ubud",
+            "hotel": "Maya Ubud Resort & Spa",
             "desc": "退房后前往乌布，中途可停留艺术村。入住玛雅乌布度假村，感受巴厘岛的森林气息。晚上在乌布皇宫附近享用地道脏鸭餐。",
             "pois": [
-                {"name": "Maya Ubud Resort", "lat": -8.5081, "lon": 115.2758, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g297701-d305615-Reviews-Maya_Ubud_Resort_Spa-Ubud_Gianyar_Regency_Bali.html"},
+                {"name": "Maya Ubud Resort & Spa", "lat": -8.5081, "lon": 115.2758, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g297701-d305615-Reviews-Maya_Ubud_Resort_Spa-Ubud_Gianyar_Regency_Bali.html"},
                 {"name": "Bebek Bengil (脏鸭餐)", "lat": -8.5147, "lon": 115.2647, "type": "dining", "link": "https://www.tripadvisor.cn/Restaurant_Review-g297701-d786438-Reviews-Bebek_Bengil-Ubud_Gianyar_Regency_Bali.html"}
             ]
         },
@@ -53,7 +54,7 @@ def generate_html(data):
             "day": 5,
             "date": "2月15日",
             "title": "猴子林与亲子咖啡",
-            "hotel": "Maya Ubud",
+            "hotel": "Maya Ubud Resort & Spa",
             "desc": "步行探索乌布圣猴林。下午前往全巴厘岛最出名的亲子餐厅 Milk & Madu，那里有专门的儿童游戏室和美味的披萨。",
             "pois": [
                 {"name": "Sacred Monkey Forest", "lat": -8.5188, "lon": 115.2585, "type": "kids", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d379334-Reviews-Sacred_Monkey_Forest_Sanctuary-Ubud_Gianyar_Regency_Bali.html"},
@@ -64,7 +65,7 @@ def generate_html(data):
             "day": 6,
             "date": "2月16日",
             "title": "梯田与圣泉祈福",
-            "hotel": "Maya Ubud",
+            "hotel": "Maya Ubud Resort & Spa",
             "desc": "早起避开人群前往德格拉朗梯田。随后参观圣泉寺，体验巴厘岛的宗教文化。下午回酒店享受玛雅乌布著名的无边泳池。",
             "pois": [
                 {"name": "Tegalalang Rice Terrace", "lat": -8.4312, "lon": 115.2800, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g297701-d2279188-Reviews-Tegalalang_Rice_Terrace-Ubud_Gianyar_Regency_Bali.html"},
@@ -74,12 +75,14 @@ def generate_html(data):
         {
             "day": 7,
             "date": "2月17日",
-            "title": "启程转机香港",
-            "hotel": "Regala Skycity HK",
-            "desc": "告别巴厘岛，乘机飞往香港。入住机场附近的丽豪航天城酒店。晚上可以去 11 SKIES 购物中心补货或带娃在酒店休息。",
+            "title": "启程回京：巴厘岛-香港-北京",
+            "hotel": "Regala Skycity Hotel",
+            "desc": "✈️ 航班信息：巴厘岛-香港 (16:20) | 香港-北京 (次日 13:50)。入住香港丽豪航天城酒店。晚上可以在 11 SKIES 购物中心补货。",
             "pois": [
-                {"name": "Regala Skycity Hotel", "lat": 22.2985, "lon": 113.9360, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g294217-d23821034-Reviews-Regala_Skycity_Hotel-Hong_Kong.html"}
-            ]
+                {"name": "Regala Skycity Hotel", "lat": 22.2985, "lon": 113.9360, "type": "hotel", "link": "https://www.tripadvisor.cn/Hotel_Review-g294217-d23821034-Reviews-Regala_Skycity_Hotel-Hong_Kong.html"},
+                {"name": "香港国际机场 (HKG)", "lat": 22.3080, "lon": 113.9185, "type": "attraction", "link": "https://www.tripadvisor.cn/Attraction_Review-g294217-d2279188-Reviews-Hong_Kong_International_Airport-Hong_Kong.html"}
+            ],
+            "tips": "💡 转机提示：行李通常可以直挂北京，请在巴厘岛值机时确认。香港机场提供丰富的免税购物和亲子休息区。"
         }
     ]
 
@@ -229,7 +232,7 @@ def generate_html(data):
             font-weight: 600;
             margin-bottom: 15px;
         }
-        .itinerary-card p { font-size: 14px; line-height: 1.6; color: var(--text-main); margin-bottom: 20px; }
+        .itinerary-card p { font-size: 14px; line-height: 1.6; color: var(--text-main); margin-bottom: 10px; }
 
         .poi-item {
             display: flex;
@@ -255,6 +258,16 @@ def generate_html(data):
         .poi-info { flex: 1; }
         .poi-info strong { display: block; font-size: 14px; }
         .poi-info span { font-size: 11px; color: var(--text-sub); }
+
+        /* Tips Card */
+        .tips-card {
+            background: #FFF7ED;
+            padding: 15px;
+            border-radius: 18px;
+            border: 1px solid #FFEDD5;
+            margin-bottom: 20px;
+        }
+        .tips-card p { margin: 0; font-size: 13px; color: #9A3412; line-height: 1.5; }
 
         /* Map Section */
         #map {
@@ -338,7 +351,7 @@ def generate_html(data):
         
         <footer class="footer">
             <p>由 <strong>songsong的小跟班</strong> 为您精心打造</p>
-            <p>V8.0 全程路线版 | 专属 AI 助手</p>
+            <p>V9.0 航班动态版 | 专属 AI 助手</p>
         </footer>
     </div>
 
@@ -374,17 +387,20 @@ def generate_html(data):
                     <div class="poi-icon"><i class="fas fa-${poi.type === 'hotel' ? 'hotel' : (poi.type === 'dining' ? 'utensils' : (poi.type === 'kids' ? 'child' : 'map-marker-alt'))}"></i></div>
                     <div class="poi-info">
                         <strong>${poi.name}</strong>
-                        <span>点击查看 TripAdvisor 详情</span>
+                        <span>点击查看详情</span>
                     </div>
                     <i class="fas fa-external-link-alt" style="font-size: 12px; color: #cbd5e1;"></i>
                 </a>
             `).join('');
+
+            const tipsHtml = data.tips ? `<div class="tips-card"><p>${data.tips}</p></div>` : '';
 
             document.getElementById('dayContent').innerHTML = `
                 <div class="itinerary-card">
                     <div class="hotel-badge"><i class="fas fa-bed"></i> 入住: ${data.hotel}</div>
                     <h2>${data.title}</h2>
                     <p>${data.desc}</p>
+                    ${tipsHtml}
                     <h3 style="font-size: 14px; margin-bottom: 12px; color: var(--text-sub);">行程目的地:</h3>
                     ${poisHtml}
                 </div>
@@ -435,7 +451,7 @@ if __name__ == "__main__":
     }
     
     html_content = generate_html(data)
-    dashboard_path = '/Users/sudandan/.openclaw/bali_dashboard.html'
+    dashboard_path = '/Users/sudandan/.openclaw/workspace/bali-guide/index.html'
     with open(dashboard_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
     print(f"Dashboard updated at {dashboard_path}")
